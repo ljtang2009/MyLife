@@ -8,9 +8,9 @@
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "井井",
+		"navigationBarBackgroundColor": "#0099FF",
 		"backgroundColor": "#F8F8F8"
 	}
 }
