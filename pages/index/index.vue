@@ -1,8 +1,10 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
+	<view class="container">
+		<view class="intro">本项目已包含uni ui组件，无需import和注册，可直接使用。在代码区键入字母u，即可通过代码助手列出所有可用组件。光标置于组件名称处按F1，即可查看组件文档。</view>
+		<text class="intro">详见：</text>
+		<uni-link :href="href" :text="href"></uni-link>
+		<view>
+			<button type="primary" @click="goToWeather()">转到天气</button>
 		</view>
 	</view>
 </template>
@@ -11,42 +13,25 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				href: 'https://uniapp.dcloud.io/component/README?id=uniui'
 			}
 		},
-		onLoad() {
-
-		},
 		methods: {
-
+			//转到天气
+			goToWeather() {
+				uni.navigateTo({
+					url: '../weather/index',
+					animationType: 'pop-in'
+				})
+			}
 		}
 	}
 </script>
 
 <style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+	.container {
+		padding: 20px;
+		font-size: 14px;
+		line-height: 24px;
 	}
 </style>
