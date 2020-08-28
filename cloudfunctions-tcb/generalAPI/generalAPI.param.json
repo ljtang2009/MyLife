@@ -2,6 +2,6 @@
 // 配置教程参考：https://uniapp.dcloud.net.cn/uniCloud/quickstart?id=runparam
 {	"method": "getTime",
 	"params": {
-		"format": "M月D日"
+		"format": "M月D日 dddd"
 	}
 }

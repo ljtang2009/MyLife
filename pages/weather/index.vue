@@ -2,7 +2,7 @@
 	<view class="app">
 		<view class="top_row">
 			<view>上海市</view>
-			<view>8月28日 周五</view>
+			<view>{{dateStr}}</view>
 		</view>
 		<view class="main_info">
 			<view>
@@ -17,27 +17,46 @@
 </template>
 
 <script>
+	const dayjs = require('dayjs');
+	require('dayjs/locale/zh-cn');
+	dayjs.locale('zh-cn'); // 全局使用
+
 	export default {
 		data() {
 			return {
-
+				dateStr: '',
 			};
 		},
+		async onLoad() {
+			this.dateStr = await this.getDate(); //获取本地日期
+			this.getDate({
+				sever: true
+			}).then(res => {
+				this.dateStr = res;
+			});
+		},
 		methods: {
-			onShow: () => {
-				uniCloud.callFunction({
-					name: 'generalAPI',
-					data: {
-						method: 'getTime',
-						params: {
-							format: 'M月D日'
+			/**
+			 * 获取日期
+			 * @param {Object} option
+			 * @return {String}
+			 */
+			async getDate(option) {
+				const formatStr = 'M月D日 dddd';
+				let tempDateStr = dayjs().format(formatStr);
+				if (option && option.sever) {
+					tempDateStr = await uniCloud.callFunction({
+						name: 'generalAPI',
+						data: {
+							method: 'getTime',
+							params: {
+								format: formatStr
+							}
 						}
-					}
-				}).then(res => {
-					console.log('res', res);
-				}).catch(err => {
-					console.log('err', err);
-				})
+					});
+					tempDateStr = tempDateStr.result;
+				}
+				return tempDateStr;
 			},
 		}
 	}

@@ -1,5 +1,7 @@
 const dayjs = require('dayjs');
 const utc = require('dayjs/plugin/utc');
+require('dayjs/locale/zh-cn');
+dayjs.locale('zh-cn'); // 全局使用
 const timezone = require('dayjs/plugin/timezone');
 dayjs.extend(utc);
 dayjs.extend(timezone);
