@@ -6,7 +6,9 @@
 		}
 	}    ,{
             "path" : "pages/weather/index",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "天气"
+			}
         }
     ],
 	"globalStyle": {
